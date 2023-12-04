@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Data // 핵심 도메인은
+@Data
 public class Item {
     private Long id;
     private String itemName;
