@@ -54,10 +54,10 @@ public class BasicItemController {
 
     // modelAttribute 사용해보기
     @PostMapping("/add")
-    public String addItemV2(@ModelAttribute("item") Item item, Model model) {
+    public String addItemV2(@ModelAttribute("item") Item item) {
         // ModelAttribute를 추가하면 item 객체를 생성하고 모델에 넣어줄 수 있다.
         itemRepository.save(item);
-//        model.addAttribute("item", item); // modelattribute에 지정한 이름을 가지고 model에 넣는 동작까지 수행해주어서 이 구문이 필요없다.
+        
         return "basic/item";
     }
     /**
