@@ -35,8 +35,8 @@ public class BasicItemController {
         return "basic/add";
     }
 
-    @PostMapping("/add")
-    public String save(@RequestParam String itemName,
+//    @PostMapping("/add")
+    public String addItemV1(@RequestParam String itemName,
                        @RequestParam Integer price,
                        @RequestParam Integer quantity,
                        Model model) {
@@ -52,7 +52,14 @@ public class BasicItemController {
         return "basic/item";
     }
 
-
+    // modelAttribute 사용해보기
+    @PostMapping("/add")
+    public String addItemV2(@ModelAttribute("item") Item item, Model model) {
+        // ModelAttribute를 추가하면 item 객체를 생성하고 모델에 넣어줄 수 있다.
+        itemRepository.save(item);
+//        model.addAttribute("item", item); // modelattribute에 지정한 이름을 가지고 model에 넣는 동작까지 수행해주어서 이 구문이 필요없다.
+        return "basic/item";
+    }
     /**
      * 테스트용 데이터를 추가
      */
