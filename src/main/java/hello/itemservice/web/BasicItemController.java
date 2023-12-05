@@ -47,7 +47,6 @@ public class BasicItemController {
         item.setQuantity(quantity);
 
         itemRepository.save(item);
-
         model.addAttribute("item", item); // -> 상품을 저장하고 상세화면에서 보여주기 위해서
         return "basic/item";
     }
@@ -57,17 +56,23 @@ public class BasicItemController {
     public String addItemV2(@ModelAttribute("item") Item item) {
         // ModelAttribute를 추가하면 item 객체를 생성하고 모델에 넣어줄 수 있다.
         itemRepository.save(item);
+        return "basic/item";
+    }
 
+//    @PostMapping("/add")
+    public String addItemV3(@ModelAttribute Item item) {
+        // 클래스명의 첫 글자를 소문자로 바꾼게 이름으로 지정된다. Item -> item
+        itemRepository.save(item);
         return "basic/item";
     }
 
     @PostMapping("/add")
-    public String addItemV3(@ModelAttribute Item item) {
-        // 클래스명의 첫 글자를 소문자로 바꾼게 이름으로 지정된다. Item -> item
+    public String addItemV4(Item item) {
+        // @ModelAttribute도 생략 가능 -> 역시 첫글자를 소문자로 바꿔 네이밍
         itemRepository.save(item);
-
         return "basic/item";
     }
+
     /**
      * 테스트용 데이터를 추가
      */
