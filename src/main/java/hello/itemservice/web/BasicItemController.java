@@ -48,7 +48,7 @@ public class BasicItemController {
 
         itemRepository.save(item);
 
-        model.addAttribute(item); // -> 상품을 저장하고 상세화면에서 보여주기 위해서
+        model.addAttribute("item", item); // -> 상품을 저장하고 상세화면에서 보여주기 위해서
         return "basic/item";
     }
 
